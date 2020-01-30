@@ -1,0 +1,19 @@
+{
+  "name": "reactreview",
+  "version": "1.0.0",
+  "description": "A really basic react app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dedanmsafari/Reactreview.git"
+  },
+  "author": "Dedan Msafari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dedanmsafari/Reactreview/issues"
+  },
+  "homepage": "https://github.com/dedanmsafari/Reactreview#readme"
+}
