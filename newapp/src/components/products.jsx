@@ -8,8 +8,9 @@ class Products extends Component {
         return ( 
             <React.Fragment>
               
-        <h5>{title}</h5>
+    
 <div className="card-fluid" style={{width: 200}}>
+<p className="card-title">{title}</p>
 <img className="card-img-top" src={imgUrl} alt="Product"/>
 <div className="card-body">
 <p className="card-text">Price:${price}</p>
