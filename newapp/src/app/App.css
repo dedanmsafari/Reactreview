@@ -1,0 +1,9 @@
+.container-fluid{
+  background-color: rgb(126, 129, 122);
+}
+
+.card-fluid{
+margin:auto;
+margin-top: 10px;
+padding:10px;
+}
