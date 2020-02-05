@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Products from "../components/products";
-// eslint-disable-next-line 
 import Wishlist from "../components/wishlist";
 import http from '../services/httpservice';
 import { ToastContainer } from 'react-toastify';
@@ -10,7 +9,8 @@ import "./App.css";
 
 class App extends Component {
   state = { 
-    products:[]
+    products:[],
+    wishlist:[]
    }
   async  componentDidMount() {
     
@@ -18,6 +18,12 @@ class App extends Component {
     this.setState({products})
     
    }
+   handleWishlist = product => {
+
+   const newWishlist=[...this.state.wishlist,product]
+    this.setState({wishlist:newWishlist})
+  };
+
   render() { 
     return ( 
       <React.Fragment>
@@ -27,9 +33,15 @@ class App extends Component {
   {this.state.products.map(p => (
           <Products  className="products-item"  key={p._id}
           product={p}
+          onWishlist={this.handleWishlist}
           />
+        
       ))}
+        <Wishlist
+wishlist={this.state.wishlist}
+        />
     </div> 
+   
  </div>
      </React.Fragment>
      );
