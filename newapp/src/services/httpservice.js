@@ -4,8 +4,8 @@ import { toast} from 'react-toastify';
 axios.interceptors.response.use(null,error => {
     const expectederrors = error.response && error.response.status >= 400 && error.response.status < 500
 if(!expectederrors){
- logger.capture(error);
- toast('An unexpected error occured in the application')
+ logger.capture(error)
+ toast.error('An unexpected error occured in the application');
  
 }
 return Promise.reject(error);
