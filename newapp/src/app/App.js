@@ -23,6 +23,11 @@ class App extends Component {
    const newWishlist=[...this.state.wishlist,product]
     this.setState({wishlist:newWishlist})
   };
+   handleRemove = product => {
+const wishlist=[...this.state.wishlist]
+wishlist.filter(p => p !== product)
+this.setState({wishlist})
+  };
 
   render() { 
     return ( 
@@ -30,18 +35,25 @@ class App extends Component {
       <ToastContainer />
 <div className="container-fluid">
  <div className="row">
-  {this.state.products.map(p => (
+
+   {this.state.products.map(p => (
           <Products  className="products-item"  key={p._id}
           product={p}
           onWishlist={this.handleWishlist}
+          onRemove={this.handleRemove}
           />
         
       ))}
-        <Wishlist
+   
+   <div className="col-sm-12 col-lg-3">
+   <Wishlist
 wishlist={this.state.wishlist}
         />
+     </div>
+  
+      
     </div> 
-   
+ 
  </div>
      </React.Fragment>
      );
