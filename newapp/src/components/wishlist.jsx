@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
 class Wishlist extends Component {
-    state = {  }
     render() { 
-        return ( <h1>Wishlist</h1> );
+
+        return ( 
+            <div>
+           <h6 className="hwishlist">wishlists</h6>
+
+                   {this.props.wishlist.map( w => (
+
+                  <ul key={w._id} class="list-group list-group-flush">
+                    <li class="list-group-item">{w.title}</li>
+                  </ul>
+            ))}
+  </div>
+
+         );
     }
 }
  
