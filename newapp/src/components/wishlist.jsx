@@ -8,8 +8,8 @@ class Wishlist extends Component {
 
                    {this.props.wishlist.map( w => (
 
-                  <ul key={w._id} class="list-group list-group-flush">
-                    <li class="list-group-item">{w.title}</li>
+                  <ul key={w._id} className="list-group list-group-flush">
+                    <li className="list-group-item">{w.title}</li>
                   </ul>
             ))}
   </div>
