@@ -22,11 +22,13 @@ class App extends Component {
 
    const newWishlist=[...this.state.wishlist,product]
     this.setState({wishlist:newWishlist})
+
+    
   };
-   handleRemove = product => {
-const wishlist=[...this.state.wishlist]
-wishlist.filter(p => p !== product)
-this.setState({wishlist})
+   handleRemove = productId => {
+const wishlist = this.state.wishlist.filter( w => w._id !== productId);
+this.setState({ wishlist})
+
   };
 
   render() { 
@@ -41,6 +43,7 @@ this.setState({wishlist})
           product={p}
           onWishlist={this.handleWishlist}
           onRemove={this.handleRemove}
+          wishlist={this.state.wishlist}
           />
         
       ))}
