@@ -2,8 +2,7 @@ import React, { Component } from "react";
 class Products extends Component {
   render() {
     const { title, price, imgUrl } = this.props.product;
-    console.log(this.props);
-
+  
     return (
       <React.Fragment>
         <div className="card-fluid" style={{ width: 200 }}>
@@ -16,6 +15,7 @@ class Products extends Component {
               <button
               className="btn btn-primary"
               onClick={() => this.props.onWishlist(this.props.product)}
+             disabled ={this.disable(this.props.product._id)}
             >
               Add 
             </button> 
@@ -23,7 +23,7 @@ class Products extends Component {
               <div className="col-sm-12 col-lg-6">
               <button
               className="btn btn-danger"
-              onClick={() => this.props.onRemove(this.props.product)}
+              onClick={() => this.props.onRemove(this.props.product._id)}
             >
               Remove{" "}
             </button>
@@ -35,6 +35,12 @@ class Products extends Component {
         </div>
       </React.Fragment>
     );
+  }
+  disable(productId){
+    const wishlist = [...this.props.wishlist]
+ if(wishlist.some( w => w._id === productId) )
+   return true;
+ 
   }
 }
 
