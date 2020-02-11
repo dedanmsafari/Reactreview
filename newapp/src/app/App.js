@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Products from "../components/products";
 import Wishlist from "../components/wishlist";
 import http from '../services/httpservice';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import config from '../config.json';
 import "./App.css";
@@ -14,21 +14,30 @@ class App extends Component {
    }
   async  componentDidMount() {
     
-    const {data:products} = await http.get(config.apiEndpoint);
+    const {data:products} = await http.get(`${config.apiEndpoint}/products`);
     this.setState({products})
-    
    }
-   handleWishlist = product => {
+   handleWishlist = async product => {
+     const {data:wishlist} = await http.post(`${config.apiEndpoint}/wishlist`,product)
 
-   const newWishlist=[...this.state.wishlist,product]
+   const newWishlist=[...this.state.wishlist,wishlist]
     this.setState({wishlist:newWishlist})
-
     
   };
-   handleRemove = productId => {
-const wishlist = this.state.wishlist.filter( w => w._id !== productId);
-this.setState({ wishlist})
+   handleRemove = async product => {
+     const originalwishlist= this.state.wishlist;
+     
+const wishlist = this.state.wishlist.filter( w => w._id !== product._id);
+this.setState({ wishlist});
+try {
+  await http.delete(`${config.apiEndpoint}/wishlist/${product._id}`)
+} catch (ex) {
+  if(ex.response && ex.response.status === 404) {
 
+    toast('the post has already been deleted');
+  }
+    this.setState({wishlist:originalwishlist})
+}
   };
 
   render() { 
