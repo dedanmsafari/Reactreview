@@ -23,7 +23,7 @@ class Products extends Component {
               <div className="col-sm-12 col-lg-6">
               <button
               className="btn btn-danger"
-              onClick={() => this.props.onRemove(this.props.product._id)}
+              onClick={() => this.props.onRemove(this.props.product)}
             >
               Remove{" "}
             </button>
